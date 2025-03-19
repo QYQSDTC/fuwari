@@ -1,9 +1,6 @@
 # About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
 
-::github{repo="saicaca/fuwari"}
+大家好，我是华中科技大学的一名在读博士生，我的主要研究方向是**使用脉冲星测时阵列探测纳赫兹连续引力波**。除此之外，我对技术以及人工智能也有着浓厚的兴趣，这个博客主要用来记录我在学习之余所搭建的一些小项目以及一些技术分享。
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+下面是我的 github 主页，欢迎大家来 star 或者 fork。
+::github{repo="qyqsdtc/qyqsdtc"}

@@ -15,7 +15,7 @@ export const siteConfig: SiteConfig = {
     fixed: false,     // Hide the theme color picker for visitors
   },
   banner: {
-    enable: false,
+    enable: true,
     src: 'assets/images/demo-banner.png',   // Relative to the /src directory. Relative to the /public directory if it starts with '/'
     position: 'center',      // Equivalent to object-position, only supports 'top', 'center', 'bottom'. 'center' by default
     credit: {
@@ -53,7 +53,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
   avatar: 'assets/images/demo-avatar.png',  // Relative to the /src directory. Relative to the /public directory if it starts with '/'
   name: 'QYQ-42B',
-  bio: '无人扶我青云志，我自踏雪至山巅。若是命中无此运，亦可孤身登昆仑。红尘赠我三尺剑，酒看瘦马一世街。世人朝路乃绝涧，独见众生止步前。海到尽头天作岸，山登绝顶我为峰。如若东山能再起，大鹏展翅九万里。一入红尘梦易真，一朝悟透心境名。一朝悟道见真我，昔日枷锁皆云烟。天门将至百运开，拂尘轻笑问仙来。',
+  bio: 'Laziness makes people progress',
   links: [
     // {
     //   name: 'Twitter',
