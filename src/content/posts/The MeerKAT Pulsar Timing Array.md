@@ -3,7 +3,7 @@ title: The MeerKAT Pulsar Timing Array
 published: 2025-04-20
 description: 'arXiv 文章选读'
 tags: [arXiv, research, PTA]
-category: [arXiv, research]
+category: arXiv
 draft: false
 ---
 
