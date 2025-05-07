@@ -2,7 +2,6 @@
 title: Puslar Timing Array
 published: 2025-05-07
 description: arXiv 文章选读
-image: 
 tags:
   - arXiv
   - PTA
