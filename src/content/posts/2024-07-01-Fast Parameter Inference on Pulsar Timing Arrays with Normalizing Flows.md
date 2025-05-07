@@ -1,10 +1,14 @@
 ---
-title: "深度分析：Fast Parameter Inference on Pulsar Timing Arrays with Normalizing Flows"
+title: 深度分析：Fast Parameter Inference on Pulsar Timing Arrays with Normalizing Flows
 published: 2025-04-21
-description: "本文深入分析了一篇关于使用归一化流进行脉冲星计时阵列快速参数推断的论文，探讨了如何利用机器学习方法显著加速引力波数据分析过程。"
-tags: [PTA, research, AI]
+description: 本文深入分析了一篇关于使用归一化流进行脉冲星计时阵列快速参数推断的论文，探讨了如何利用机器学习方法显著加速引力波数据分析过程。
+tags:
+  - PTA
+  - research
+  - AI
 category: PRL
 draft: false
+words_written: 3482
 ---
 # 深度分析：Fast Parameter Inference on Pulsar Timing Arrays with Normalizing Flows (arXiv: 2310.12209v1)
 

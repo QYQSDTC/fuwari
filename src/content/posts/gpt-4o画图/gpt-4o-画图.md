@@ -1,11 +1,15 @@
 ---
 title: GPT-4o 画图提示词
 published: 2025-04-12
-description: '精选的 GPT-4o 画图提示词'
-image: './dh_USJ.png'
-tags: [AI, GPT-4o, 画图]
+description: 精选的 GPT-4o 画图提示词
+image: ./dh_USJ.png
+tags:
+  - AI
+  - GPT-4o
+  - 画图
 category: 阿QAPI
 draft: false
+words_written: 2738
 ---
 
 # 精选画图 prompts

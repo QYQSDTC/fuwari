@@ -1,10 +1,14 @@
 ---
 title: The MeerKAT Pulsar Timing Array
 published: 2025-04-20
-description: 'arXiv 文章选读'
-tags: [arXiv, research, PTA]
+description: arXiv 文章选读
+tags:
+  - arXiv
+  - research
+  - PTA
 category: arXiv
 draft: false
+words_written: 2898
 ---
 
 # Analysis of "The MeerKAT Pulsar Timing Array: the first search for gravitational waves with the MeerKAT radio telescope" (arXiv:2412.01153)
