@@ -163,18 +163,18 @@
             </div>
             <div class="summary-card">
                 <div class="card-title">💰 住户存款 (12月)</div>
-                <div class="card-value coral">177.95 万亿</div>
-                <div class="card-detail">年内增长: +13.51%</div>
+                <div class="card-value coral">165.89 万亿</div>
+                <div class="card-detail">年内增长: +5.82%</div>
             </div>
             <div class="summary-card">
                 <div class="card-title">🏦 非银机构存款 (12月)</div>
-                <div class="card-value teal">41.34 万亿</div>
-                <div class="card-detail">年内增长: +52.69%</div>
+                <div class="card-value teal">34.60 万亿</div>
+                <div class="card-detail">年内增长: +27.77%</div>
             </div>
             <div class="summary-card">
                 <div class="card-title">📊 市值/存款比率 (12月)</div>
-                <div class="card-value gold">69.12%</div>
-                <div class="card-detail">高点: 69.12% (12月)</div>
+                <div class="card-value gold">74.14%</div>
+                <div class="card-detail">高点: 74.14% (12月)</div>
             </div>
         </div>
         
@@ -190,10 +190,10 @@
         const marketCap = [83.90, 87.11, 87.20, 84.87, 86.90, 90.78, 94.87, 104.16, 105.99, 107.32, 105.42, 123.00];
         
         // 住户存款（万亿元）
-        const householdDeposits = [156.77, 157.38, 160.47, 159.08, 159.55, 162.03, 160.91, 161.02, 163.98, 162.64, 163.31, 177.95];
+        const householdDeposits = [156.77, 157.38, 160.47, 159.08, 159.55, 162.03, 160.91, 161.02, 163.98, 162.64, 163.31, 165.89];
         
         // 非银机构存款（万亿元）
-        const nonbankDeposits = [27.08, 29.91, 28.50, 30.07, 31.26, 30.74, 32.89, 34.06, 33.00, 34.86, 34.93, 41.34];
+        const nonbankDeposits = [27.08, 29.91, 28.50, 30.07, 31.26, 30.74, 32.89, 34.06, 33.00, 34.86, 34.93, 34.60];
         
         // A股总市值/住户存款 (%)
         const ratio = marketCap.map((m, i) => (m / householdDeposits[i] * 100).toFixed(2));
@@ -334,11 +334,7 @@
                         display: true,
                         position: 'left',
                         min: 0,
-<<<<<<< HEAD
-                        max: 350,
-=======
                         max: 180,
->>>>>>> 9bec4f50e7f74231f55659021b9c1940bfdc979f
                         grid: { color: 'rgba(255, 255, 255, 0.05)' },
                         ticks: {
                             color: '#8b949e',
@@ -350,11 +346,7 @@
                         type: 'linear',
                         display: true,
                         position: 'right',
-<<<<<<< HEAD
-                        min: 30,
-=======
                         min: 40,
->>>>>>> 9bec4f50e7f74231f55659021b9c1940bfdc979f
                         max: 80,
                         grid: { drawOnChartArea: false },
                         ticks: {
