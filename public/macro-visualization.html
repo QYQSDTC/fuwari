@@ -149,7 +149,7 @@
         
         <!-- 第二张图：环比变化率 -->
         <div class="chart-wrapper">
-            <div class="chart-title">📈 各指标环比变化率</div>
+            <div class="chart-title">📈 各指标环比增速变化（百分点）</div>
             <div class="chart-container">
                 <canvas id="momChart"></canvas>
             </div>
@@ -184,7 +184,7 @@
     <script>
         // 数据准备 - 全年12个月
         const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月(26)'];
-        const momMonths = ['2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月(26)'];
+        const momMonths = ['3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月(26)'];
         
         // A股总市值（万亿元）
         const marketCap = [83.90, 87.11, 87.20, 84.87, 86.90, 90.78, 94.87, 104.16, 105.99, 107.32, 105.42, 123.00, 123.00];
@@ -198,7 +198,7 @@
         // A股总市值/住户存款 (%)
         const ratio = marketCap.map((m, i) => (m / householdDeposits[i] * 100).toFixed(2));
         
-        // 计算环比变化率函数
+        // 计算环比变化率函数（一阶：环比增速）
         function calcMoM(arr) {
             const result = [];
             for (let i = 1; i < arr.length; i++) {
@@ -208,11 +208,27 @@
             return result;
         }
         
-        // 环比变化率数据
-        const marketCapMoM = calcMoM(marketCap);
-        const householdMoM = calcMoM(householdDeposits);
-        const nonbankMoM = calcMoM(nonbankDeposits);
-        const ratioMoM = calcMoM(ratio.map(r => parseFloat(r)));
+        // 计算环比增速变化函数（二阶：增速变化）
+        function calcMoMChange(momArr) {
+            const result = [];
+            for (let i = 1; i < momArr.length; i++) {
+                const change = (momArr[i] - momArr[i-1]).toFixed(2);
+                result.push(parseFloat(change));
+            }
+            return result;
+        }
+        
+        // 一阶环比增速
+        const marketCapMoM1 = calcMoM(marketCap);
+        const householdMoM1 = calcMoM(householdDeposits);
+        const nonbankMoM1 = calcMoM(nonbankDeposits);
+        const ratioMoM1 = calcMoM(ratio.map(r => parseFloat(r)));
+        
+        // 二阶：环比增速变化
+        const marketCapMoM = calcMoMChange(marketCapMoM1);
+        const householdMoM = calcMoMChange(householdMoM1);
+        const nonbankMoM = calcMoMChange(nonbankMoM1);
+        const ratioMoM = calcMoMChange(ratioMoM1);
 
         // ========== 第一张图：绝对值 ==========
         const ctx1 = document.getElementById('macroChart').getContext('2d');
@@ -368,7 +384,7 @@
                 labels: momMonths,
                 datasets: [
                     {
-                        label: 'A股总市值 环比',
+                        label: 'A股总市值 增速变化',
                         data: marketCapMoM,
                         backgroundColor: 'rgba(0, 212, 255, 0.7)',
                         borderColor: '#00d4ff',
@@ -378,7 +394,7 @@
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '住户存款 环比',
+                        label: '住户存款 增速变化',
                         data: householdMoM,
                         backgroundColor: 'rgba(255, 107, 107, 0.7)',
                         borderColor: '#ff6b6b',
@@ -388,7 +404,7 @@
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '非银机构存款 环比',
+                        label: '非银机构存款 增速变化',
                         data: nonbankMoM,
                         backgroundColor: 'rgba(78, 205, 196, 0.7)',
                         borderColor: '#4ecdc4',
@@ -398,7 +414,7 @@
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '市值/存款比率 环比',
+                        label: '市值/存款比率 增速变化',
                         data: ratioMoM,
                         backgroundColor: 'rgba(255, 217, 61, 0.7)',
                         borderColor: '#ffd93d',
@@ -463,7 +479,7 @@
                         },
                         title: {
                             display: true,
-                            text: '环比变化率 (%)',
+                            text: '环比增速变化（百分点）',
                             color: '#8b949e',
                             font: { size: 12 }
                         }
