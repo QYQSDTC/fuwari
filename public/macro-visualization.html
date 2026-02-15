@@ -168,8 +168,8 @@
             </div>
             <div class="summary-card">
                 <div class="card-title">🏦 非银机构存款 (1月)</div>
-                <div class="card-value teal">36.05 万亿</div>
-                <div class="card-detail">环比: +4.19%</div>
+                <div class="card-value teal">37.54 万亿</div>
+                <div class="card-detail">环比: +4.71%</div>
             </div>
             <div class="summary-card">
                 <div class="card-title">📊 市值/存款比率 (1月)</div>
@@ -193,7 +193,7 @@
         const householdDeposits = [156.77, 157.38, 160.47, 159.08, 159.55, 162.03, 160.91, 161.02, 163.98, 162.64, 163.31, 165.89, 168.02];
         
         // 非银机构存款（万亿元）
-        const nonbankDeposits = [27.08, 29.91, 28.50, 30.07, 31.26, 30.74, 32.89, 34.06, 33.00, 34.86, 34.93, 34.60, 36.05];
+        const nonbankDeposits = [27.77, 30.58, 29.17, 31.02, 32.19, 31.61, 33.85, 35.06, 33.99, 35.99, 36.13, 35.85, 37.54];
         
         // A股总市值/住户存款 (%)
         const ratio = marketCap.map((m, i) => (m / householdDeposits[i] * 100).toFixed(2));
@@ -225,10 +225,10 @@
         const ratioMoM1 = calcMoM(ratio.map(r => parseFloat(r)));
         
         // 二阶：环比增速变化
-        const marketCapMoM = calcMoMChange(marketCapMoM1);
-        const householdMoM = calcMoMChange(householdMoM1);
-        const nonbankMoM = calcMoMChange(nonbankMoM1);
-        const ratioMoM = calcMoMChange(ratioMoM1);
+        const marketCapMoM = [-3.73, -2.77, 5.06, 2.07, 0.05, 5.28, -8.03, -0.51, -3.02, 18.45, -16.68];
+        const householdMoM = [1.57, -2.83, 1.17, 1.25, -2.24, 0.76, 1.77, -2.66, 1.23, 1.17, -0.3];
+        const nonbankMoM = [-14.73, 10.95, -2.57, -5.57, 8.89, -3.52, -6.62, 8.93, -5.49, -1.16, 5.48];
+        const ratioMoM = [-5.24, 0.0, 3.92, 0.76, 2.37, 4.49, -9.8, 2.17, -4.27, 17.05, -16.14];
 
         // ========== 第一张图：绝对值 ==========
         const ctx1 = document.getElementById('macroChart').getContext('2d');
