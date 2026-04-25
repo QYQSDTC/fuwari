@@ -149,7 +149,7 @@
         
         <!-- 第二张图：环比变化率 -->
         <div class="chart-wrapper">
-            <div class="chart-title">📈 各指标环比增速变化（百分点）</div>
+            <div class="chart-title">📈 各指标环比变化率</div>
             <div class="chart-container">
                 <canvas id="momChart"></canvas>
             </div>
@@ -157,43 +157,43 @@
         
         <div class="data-summary">
             <div class="summary-card">
-                <div class="card-title">📈 A股总市值 (1月)</div>
-                <div class="card-value cyan">123.00 万亿</div>
-                <div class="card-detail">环比: 0.00%</div>
+                <div class="card-title">📈 A股总市值 (3月)</div>
+                <div class="card-value cyan">117.00 万亿</div>
+                <div class="card-detail">环比: +0.92%</div>
             </div>
             <div class="summary-card">
-                <div class="card-title">💰 住户存款 (1月)</div>
-                <div class="card-value coral">168.02 万亿</div>
-                <div class="card-detail">环比: +1.28%</div>
+                <div class="card-title">💰 住户存款 (3月)</div>
+                <div class="card-value coral">173.59 万亿</div>
+                <div class="card-detail">环比: +1.42%</div>
             </div>
             <div class="summary-card">
-                <div class="card-title">🏦 非银机构存款 (1月)</div>
-                <div class="card-value teal">37.54 万亿</div>
-                <div class="card-detail">环比: +4.71%</div>
+                <div class="card-title">🏦 非银机构存款 (3月)</div>
+                <div class="card-value teal">36.92 万亿</div>
+                <div class="card-detail">环比: -2.15%</div>
             </div>
             <div class="summary-card">
-                <div class="card-title">📊 市值/存款比率 (1月)</div>
-                <div class="card-value gold">73.21%</div>
+                <div class="card-title">📊 市值/存款比率 (3月)</div>
+                <div class="card-value gold">67.40%</div>
                 <div class="card-detail">高点: 74.14% (12月)</div>
             </div>
         </div>
         
-        <p class="source">数据来源：中上协统计月报(2026年1月)、金融机构人民币信贷收支表</p>
+        <p class="source">数据来源：股票市场统计表(2026年2月，3月A股总市值手动补录)、金融机构人民币信贷收支表(2026年3月)</p>
     </div>
 
     <script>
-        // 数据准备 - 全年12个月
-        const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月(26)'];
-        const momMonths = ['3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月(26)'];
+        // 数据准备
+        const months = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月', '1月(26)', '2月(26)', '3月(26)'];
+        const momMonths = months.slice(1);
         
         // A股总市值（万亿元）
-        const marketCap = [83.90, 87.11, 87.20, 84.87, 86.90, 90.78, 94.87, 104.16, 105.99, 107.32, 105.42, 123.00, 123.00];
+        const marketCap = [83.90, 87.11, 87.20, 84.87, 86.90, 90.78, 94.87, 104.16, 105.99, 107.32, 105.42, 123.00, 113.5478, 115.9292, 117.00];
         
         // 住户存款（万亿元）
-        const householdDeposits = [156.77, 157.38, 160.47, 159.08, 159.55, 162.03, 160.91, 161.02, 163.98, 162.64, 163.31, 165.89, 168.02];
+        const householdDeposits = [156.77, 157.38, 160.47, 159.08, 159.55, 162.03, 160.91, 161.02, 163.98, 162.64, 163.31, 165.89, 168.039091, 171.1519, 173.588952];
         
         // 非银机构存款（万亿元）
-        const nonbankDeposits = [27.77, 30.58, 29.17, 31.02, 32.19, 31.61, 33.85, 35.06, 33.99, 35.99, 36.13, 35.85, 37.54];
+        const nonbankDeposits = [27.77, 30.58, 29.17, 31.02, 32.19, 31.61, 33.85, 35.06, 33.99, 35.99, 36.13, 35.85, 36.330862, 37.730181, 36.917132];
         
         // A股总市值/住户存款 (%)
         const ratio = marketCap.map((m, i) => (m / householdDeposits[i] * 100).toFixed(2));
@@ -208,27 +208,10 @@
             return result;
         }
         
-        // 计算环比增速变化函数（二阶：增速变化）
-        function calcMoMChange(momArr) {
-            const result = [];
-            for (let i = 1; i < momArr.length; i++) {
-                const change = (momArr[i] - momArr[i-1]).toFixed(2);
-                result.push(parseFloat(change));
-            }
-            return result;
-        }
-        
-        // 一阶环比增速
-        const marketCapMoM1 = calcMoM(marketCap);
-        const householdMoM1 = calcMoM(householdDeposits);
-        const nonbankMoM1 = calcMoM(nonbankDeposits);
-        const ratioMoM1 = calcMoM(ratio.map(r => parseFloat(r)));
-        
-        // 二阶：环比增速变化
-        const marketCapMoM = [-3.73, -2.77, 5.06, 2.07, 0.05, 5.28, -8.03, -0.51, -3.02, 18.45, -16.68];
-        const householdMoM = [1.57, -2.83, 1.17, 1.25, -2.24, 0.76, 1.77, -2.66, 1.23, 1.17, -0.3];
-        const nonbankMoM = [-14.73, 10.95, -2.57, -5.57, 8.89, -3.52, -6.62, 8.93, -5.49, -1.16, 5.48];
-        const ratioMoM = [-5.24, 0.0, 3.92, 0.76, 2.37, 4.49, -9.8, 2.17, -4.27, 17.05, -16.14];
+        const marketCapMoM = calcMoM(marketCap);
+        const householdMoM = calcMoM(householdDeposits);
+        const nonbankMoM = calcMoM(nonbankDeposits);
+        const ratioMoM = calcMoM(ratio.map(r => parseFloat(r)));
 
         // ========== 第一张图：绝对值 ==========
         const ctx1 = document.getElementById('macroChart').getContext('2d');
@@ -333,7 +316,7 @@
                                 if (context.datasetIndex === 3) {
                                     label += context.parsed.y + '%';
                                 } else {
-                                    label += context.parsed.y + ' 万亿';
+                                    label += context.parsed.y.toFixed(2) + ' 万亿';
                                 }
                                 return label;
                             }
@@ -384,7 +367,7 @@
                 labels: momMonths,
                 datasets: [
                     {
-                        label: 'A股总市值 增速变化',
+                        label: 'A股总市值 环比',
                         data: marketCapMoM,
                         backgroundColor: 'rgba(0, 212, 255, 0.7)',
                         borderColor: '#00d4ff',
@@ -394,7 +377,7 @@
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '住户存款 增速变化',
+                        label: '住户存款 环比',
                         data: householdMoM,
                         backgroundColor: 'rgba(255, 107, 107, 0.7)',
                         borderColor: '#ff6b6b',
@@ -404,7 +387,7 @@
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '非银机构存款 增速变化',
+                        label: '非银机构存款 环比',
                         data: nonbankMoM,
                         backgroundColor: 'rgba(78, 205, 196, 0.7)',
                         borderColor: '#4ecdc4',
@@ -414,7 +397,7 @@
                         categoryPercentage: 0.9
                     },
                     {
-                        label: '市值/存款比率 增速变化',
+                        label: '市值/存款比率 环比',
                         data: ratioMoM,
                         backgroundColor: 'rgba(255, 217, 61, 0.7)',
                         borderColor: '#ffd93d',
@@ -479,7 +462,7 @@
                         },
                         title: {
                             display: true,
-                            text: '环比增速变化（百分点）',
+                            text: '环比变化率 (%)',
                             color: '#8b949e',
                             font: { size: 12 }
                         }
